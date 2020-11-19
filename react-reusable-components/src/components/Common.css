@@ -1,0 +1,144 @@
+.secondary-button-class{
+    border: 1px solid #D3D8E0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    background: transparent;
+    padding: 10px 20px 10px 20px;
+    margin-right: 15px;
+    color: #9FA6B7;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.secondary-button-class:hover{
+    color:#84868c;
+    border: 1px solid #aaabb0;
+}
+
+.primary-button-class:hover {
+    border: 1px solid #3797ac;
+    background: #41afc7;
+}
+
+.primary-button-class{
+    background: #53BAD1;
+    border: 1px solid #53BAD1;
+    border-radius: 2px;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    padding: 10px 20px 10px 20px;
+    margin-left: 15px;
+    cursor: pointer;
+    min-width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.buttonsPanel {
+    position: fixed;
+    bottom: 0;
+    background: #F4F5F7;
+    width: 100%;
+    min-height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.mainPanel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 150px;
+    padding: 20px;
+}
+
+.container{
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    width: 30px;
+    height: 30px;
+    opacity: 0.3;
+}
+
+.close:hover {
+    opacity: 1;
+}
+
+.close:before, .close:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 15px;
+    width: 2px;
+    background-color: #333;
+}
+  
+.close:before {
+    transform: rotate(45deg);
+}
+  
+.close:after {
+    transform: rotate(-45deg);
+}
+
+.header {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.popupPanel{
+    position: absolute;
+    opacity: 1;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    text-align: center;
+    margin: auto;
+    top:0;
+    left:0;
+    bottom: 0;
+    right: 0;
+    animation: 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55) both fadeInUp;
+    box-shadow: 0px 2.76726px 2.21381px rgba(0, 0, 0, 0.0196802),
+        0px 6.6501px 5.32008px rgba(0, 0, 0, 0.0282725),
+        0px 12.5216px 10.0172px rgba(0, 0, 0, 0.035),
+        0px 22.3363px 17.869px rgba(0, 0, 0, 0.0417275),
+        0px 41.7776px 33.4221px rgba(0, 0, 0, 0.0503198),
+        0px 100px 80px rgba(0, 0, 0, 0.07);
+}
+
+.coverEntierPage{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    top: 0;
+    left: 0;
+}
+
+.spinnerClass{
+    animation: spin 2s cubic-bezier(0, 0, 0.47, 0.48) infinite;
+    width: 14px;
+    height: 13px;
+    margin-right: 10px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
