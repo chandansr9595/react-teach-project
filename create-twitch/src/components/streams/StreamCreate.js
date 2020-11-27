@@ -34,7 +34,6 @@ class StreamCreate extends React.Component {
     }
 }
 
-
 export default reduxForm({
     form: 'CREATE_STREAM'
 })(StreamCreate);
