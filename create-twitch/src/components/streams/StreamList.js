@@ -1,7 +1,27 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { fetchStreams } from '../../actions';
 
-const StreamList = () => {
-    return <div>StreamList</div>
+class StreamList extends React.Component {
+
+    componentDidMount(){
+        this.props.fetchStreams();
+    }
+    render(){
+        return (
+            <div >Stream List
+            </div>
+        )
+    }
 }
 
-export default StreamList;
+const mapStateToProps = (state) => {
+    return {
+        streams: Object.values(state.streams),
+        currentUserId: state.auth.userId
+    }
+}
+
+export default connect(mapStateToProps, {
+    fetchStreams
+})(StreamList);
