@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchStreams } from '../../actions';
+import { fetchStreams, deleteStream } from '../../actions';
+import { Link } from 'react-router-dom';
 
 class StreamList extends React.Component {
 
@@ -8,9 +9,24 @@ class StreamList extends React.Component {
         this.props.fetchStreams();
     }
 
+    renderAdminButtons = (stream) => {
+        if(this.props.currentUserId === stream.userId){
+            return (
+                <div className="right floated content">
+                    <button className="ui button primary">Edit</button>
+                    <button className="ui button negative" onClick={() => {
+                        this.props.deleteStream(stream.id)
+                    }}>Delete</button>
+                </div>
+            );
+        }
+        else return "";
+    }
+
     renderListOfStreams = () => {
         return this.props.streams.map(stream => {
-            return <div key={stream.id} style={{borderBottom: "1px solid black", padding: "20px"}}>
+            return <div className="item" key={stream.id}>
+                {this.renderAdminButtons(stream)}
                 <div className="content">
                     {stream.title}
                 </div>
@@ -22,12 +38,16 @@ class StreamList extends React.Component {
     }
 
     render(){
-        console.log(this.props.streams);
         return (
             <div className="ui container">
-                <div className="">
+                <div className="ui celled list">
                     {this.renderListOfStreams()}
                 </div>
+                <Link to="/streams/create" 
+                    className="ui button primary" 
+                >
+                    Create Stream
+                </Link>
             </div>
         )
     }
@@ -35,10 +55,12 @@ class StreamList extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        streams: Object.values(state.streams)
+        streams: Object.values(state.streams),
+        currentUserId: state.auth.userId
     }
 }
 
 export default connect(mapStateToProps, {
-    fetchStreams
+    fetchStreams,
+    deleteStream
 })(StreamList);

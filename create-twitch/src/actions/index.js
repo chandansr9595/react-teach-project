@@ -1,4 +1,5 @@
 import StreamAPI from '../apis/streams';
+import history from '../history';
 
 export const signIn = (userId) => {
     return {
@@ -24,6 +25,17 @@ export const createStream = (formData) => {
         dispatch({
             type: "CREATE_STREAM",
             payload: response.data
+        });
+        history.push('/');
+    }
+}
+
+export const deleteStream = (streamId) => {
+    return async (dispatch) => {
+        const response = await StreamAPI.delete(`/streams/${streamId}`);
+        dispatch({
+            type: "DELETE_STREAM",
+            payload: streamId
         })
     }
 }
