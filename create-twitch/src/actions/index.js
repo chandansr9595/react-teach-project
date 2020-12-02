@@ -14,9 +14,17 @@ export const signOut = () => {
 }
 
 export const createStream = (formData) => {
-    return async (dispatch) => {
-        const response = await StreamAPI.post('/streams', formData);
-        console.log(response.data)
+    return async (dispatch, getState) => {
+        const response = await StreamAPI.post('/streams', 
+            {
+                ...formData, 
+                userId: getState().auth.userId
+            }
+        );
+        dispatch({
+            type: "CREATE_STREAM",
+            payload: response.data
+        })
     }
 }
 
