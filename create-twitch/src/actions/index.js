@@ -59,3 +59,16 @@ export const fetchStream = (streamId) => {
         });
     }
 }
+
+
+
+export const updateStream = (id, formData) => {
+    return async (dispatch) => {
+        const response = await StreamAPI.patch(`/streams/${id}`, formData);
+        dispatch({
+            type: "UPDATE_STREAM",
+            payload: response.data
+        });
+        history.push('/');
+    }
+}
